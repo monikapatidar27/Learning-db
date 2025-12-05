@@ -1,26 +1,12 @@
-// const express = require("express")
-// const mysql = require("mysql2")
+const {Pool} = require("pg")
 
-// const sqlConnection = mysql.createConnection({
-//     host:process.env.HOST,
-//     user:process.env.USER,
-//     password:process.env.PASSWORD,
-//     database:process.env.DATABASE,
-//     insecureAuth : true
-// });
+const pool = new Pool({
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: process.env.PG_PORT,
+});
 
-// module.exports = sqlConnection;
-const Sequelize = require('sequelize');
-
-const sqlConnection = new Sequelize(
-    process.env.DATABASE, 
-    process.env.USER, 
-    process.env.PASSWORD, {
-        dialect: 'mysql',
-        host: process.env.HOST || 'localhost'
-    }
-);
-
-module.exports = sqlConnection;
-
+module.exports = pool;
 

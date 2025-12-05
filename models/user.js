@@ -1,8 +1,7 @@
-// user.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/dbConnection');
+const pool = require('../database/dbConnection');
 
-const User = sequelize.define('User', {
+const User = pool.define('User', {
     user_id: { 
         type: DataTypes.INTEGER, 
         autoIncrement: true, 
